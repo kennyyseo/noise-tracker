@@ -8,9 +8,13 @@ import SettingsPage from '../SettingsPage/SettingsPage';
 
 class App extends Component {
   constructor() {
+    var dateObj = new Date();
+    var month = dateObj.getUTCMonth() + 1;
+    var day = dateObj.getUTCDate();
+    var year = dateObj.getUTCFullYear();
     super();
     this.state = {
-
+      date: month + "/" + day + "/" + year,
     }
   }
 
@@ -20,7 +24,9 @@ class App extends Component {
         <NavBar />
         <Switch>
           <Route exact path='/' render={() =>
-            <WelcomePage />
+            <WelcomePage
+              date={this.state.date}
+            />
           }>
           </Route>
           <Route exact path='/calendar' render={() =>
